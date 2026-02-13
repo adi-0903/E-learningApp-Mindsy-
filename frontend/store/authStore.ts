@@ -57,7 +57,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         phoneNumber: data.user?.phone_number || data.user?.phoneNumber || '',
         isEmailVerified: data.user?.is_email_verified || false,
         isPhoneVerified: data.user?.is_phone_verified || false,
-        profileImage: data.user?.profile_image || '',
+        profileImage: data.user?.profile_image_url || data.user?.profile_image || '',
       };
 
       // Verify role matches
@@ -142,7 +142,7 @@ export const useAuthStore = create<AuthState>((set) => ({
           phoneNumber: actualData.phone_number || actualData.phoneNumber || (cachedUser?.phoneNumber || ''),
           isEmailVerified: actualData.is_email_verified || false,
           isPhoneVerified: actualData.is_phone_verified || false,
-          profileImage: actualData.profile_image || '',
+          profileImage: actualData.profile_image_url || actualData.profile_image || '',
         };
         set({ user: freshUser, isLoggedIn: true, isLoading: false });
         await AsyncStorage.setItem('currentUser', JSON.stringify(freshUser));
@@ -193,7 +193,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         phoneNumber: actualData.phone_number || phoneNumber || (state.user?.phoneNumber || ''),
         isEmailVerified: actualData.is_email_verified ?? (state.user?.isEmailVerified || false),
         isPhoneVerified: actualData.is_phone_verified ?? (state.user?.isPhoneVerified || false),
-        profileImage: actualData.profile_image || actualData.profile_image_url || state.user.profileImage,
+        profileImage: actualData.profile_image_url || actualData.profile_image || (state.user?.profileImage || ''),
       };
       set({ user: updatedUser });
       await AsyncStorage.setItem('currentUser', JSON.stringify(updatedUser));

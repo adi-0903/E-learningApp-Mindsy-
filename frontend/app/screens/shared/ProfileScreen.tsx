@@ -157,7 +157,7 @@ function ProfileScreen({ navigation }: any) {
     return (
       <View style={styles.container}>
         <LinearGradient
-          colors={['#4f46e5', '#6366f1', '#818cf8']}
+          colors={['#06201f', '#064e3b', '#065f46']}
           style={styles.premiumHeader}
         >
           <View style={styles.profileHeaderContent}>
@@ -169,11 +169,18 @@ function ProfileScreen({ navigation }: any) {
   }
 
 
+  const headerColors = user.role === 'student'
+    ? ['#06201f', '#064e3b', '#065f46'] as readonly [string, string, ...string[]]
+    : ['#0f172a', '#1e1b4b', '#312e81'] as readonly [string, string, ...string[]];
+
+  const accentColor = user.role === 'student' ? '#10b981' : '#4f46e5';
+  const darkerAccent = user.role === 'student' ? '#065f46' : '#4338ca';
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Premium Dynamic Header */}
       <LinearGradient
-        colors={['#4f46e5', '#6366f1', '#818cf8']}
+        colors={headerColors}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.premiumHeader}
@@ -190,19 +197,19 @@ function ProfileScreen({ navigation }: any) {
             <View style={styles.avatarHalo} />
             <View style={styles.avatarInner}>
               {uploadingImage ? (
-                <ActivityIndicator color="#6366f1" size="small" />
+                <ActivityIndicator color={accentColor} size="small" />
               ) : profileImage ? (
                 <Image source={{ uri: profileImage }} style={styles.avatarImage} />
               ) : (
-                <Text style={styles.avatarLargeText}>
+                <Text style={[styles.avatarLargeText, { color: accentColor }]}>
                   {user?.name?.charAt(0) || 'S'}
                 </Text>
               )}
             </View>
-            <View style={styles.imageEditBadge}>
+            <View style={[styles.imageEditBadge, { backgroundColor: accentColor }]}>
               <MaterialCommunityIcons name="camera" size={12} color="#fff" />
             </View>
-            <View style={styles.onlineIndicator} />
+            <View style={[styles.onlineIndicator, { backgroundColor: '#10b981' }]} />
           </TouchableOpacity>
 
           <Text style={styles.userName}>{user?.name}</Text>
@@ -215,7 +222,7 @@ function ProfileScreen({ navigation }: any) {
             <MaterialCommunityIcons
               name={isEditing ? "close" : "pencil"}
               size={14}
-              color="#4f46e5"
+              color={accentColor}
             />
             <Text style={styles.editBadgeText}>{isEditing ? 'Cancel' : 'Edit'}</Text>
           </TouchableOpacity>
@@ -292,7 +299,7 @@ function ProfileScreen({ navigation }: any) {
                     {phone !== user?.phoneNumber && phone.trim().length >= 10 ? (
                       <TouchableOpacity
                         onPress={handleRequestOTP}
-                        style={styles.inlineVerifyAction}
+                        style={[styles.inlineVerifyAction, { backgroundColor: accentColor }]}
                       >
                         <MaterialCommunityIcons name="send" size={14} color="#fff" />
                         <Text style={styles.inlineVerifyActionText}>Verify</Text>
@@ -308,7 +315,7 @@ function ProfileScreen({ navigation }: any) {
 
                 <View style={styles.editFieldWrapper}>
                   <View style={styles.fieldHeader}>
-                    <MaterialCommunityIcons name="text-account" size={18} color="#6366f1" />
+                    <MaterialCommunityIcons name="text-account" size={18} color={accentColor} />
                     <Text style={styles.fieldLabelText}>About Me / Bio</Text>
                   </View>
                   <TextInput
@@ -318,11 +325,11 @@ function ProfileScreen({ navigation }: any) {
                     multiline
                     mode="outlined"
                     style={styles.bioField}
-                    activeOutlineColor="#6366f1"
+                    activeOutlineColor={accentColor}
                     outlineColor="#e2e8f0"
                     textColor="#1e293b"
-                    selectionColor="#6366f1"
-                    cursorColor="#6366f1"
+                    selectionColor={accentColor}
+                    cursorColor={accentColor}
                   />
                 </View>
 
@@ -331,7 +338,7 @@ function ProfileScreen({ navigation }: any) {
                   onPress={handleSave}
                   loading={isLoading}
                   disabled={isLoading}
-                  style={styles.premiumSaveBtn}
+                  style={[styles.premiumSaveBtn, { backgroundColor: accentColor }]}
                   contentStyle={styles.premiumSaveBtnContent}
                   labelStyle={styles.premiumSaveBtnLabel}
                 >
@@ -346,7 +353,7 @@ function ProfileScreen({ navigation }: any) {
 
                 <View style={styles.infoRow}>
                   <View style={styles.infoIconWrapper}>
-                    <MaterialCommunityIcons name="email-outline" size={18} color="#6366f1" />
+                    <MaterialCommunityIcons name="email-outline" size={18} color={accentColor} />
                   </View>
                   <View style={styles.infoContent}>
                     <Text style={styles.infoLabel}>Primary Account (Login)</Text>
@@ -364,7 +371,7 @@ function ProfileScreen({ navigation }: any) {
 
                 <View style={[styles.infoRow, { borderBottomWidth: 0 }]}>
                   <View style={styles.infoIconWrapper}>
-                    <MaterialCommunityIcons name="phone-outline" size={18} color="#6366f1" />
+                    <MaterialCommunityIcons name="phone-outline" size={18} color={accentColor} />
                   </View>
                   <View style={styles.infoContent}>
                     <Text style={styles.infoLabel}>Phone Number</Text>
@@ -386,7 +393,7 @@ function ProfileScreen({ navigation }: any) {
                   </View>
                   {!user?.isPhoneVerified && user?.phoneNumber && (
                     <TouchableOpacity onPress={handleRequestOTP} style={styles.verifyAction}>
-                      <Text style={styles.verifyActionText}>Verify</Text>
+                      <Text style={[styles.verifyActionText, { color: accentColor }]}>Verify</Text>
                     </TouchableOpacity>
                   )}
                 </View>
@@ -403,8 +410,8 @@ function ProfileScreen({ navigation }: any) {
               style={styles.settingRow}
               onPress={() => navigation.navigate('NotificationSettings')}
             >
-              <View style={[styles.settingIcon, { backgroundColor: '#eef2ff' }]}>
-                <MaterialCommunityIcons name="bell-outline" size={20} color="#4f46e5" />
+              <View style={[styles.settingIcon, { backgroundColor: user.role === 'student' ? '#f0fdfa' : '#eef2ff' }]}>
+                <MaterialCommunityIcons name="bell-outline" size={20} color={accentColor} />
               </View>
               <Text style={styles.settingLabel}>Notifications</Text>
               {unreadCount > 0 && <View style={styles.miniBadge} />}

@@ -2,7 +2,7 @@
 Authentication and user management views.
 """
 from django.contrib.auth import get_user_model
-from rest_framework import generics, status
+from rest_framework import generics, parsers, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -89,6 +89,7 @@ class LogoutView(APIView):
 class ProfileView(generics.RetrieveUpdateAPIView):
     """Get or update the current user's profile."""
     permission_classes = [IsAuthenticated]
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser, parsers.JSONParser]
 
     def get_serializer_class(self):
         if self.request.method in ('PUT', 'PATCH'):
