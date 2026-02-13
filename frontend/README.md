@@ -9,6 +9,7 @@ A comprehensive, cross-platform e-learning mobile application built with React N
 **MentiQ** is a full-featured e-learning platform designed to revolutionize digital education. It provides an intuitive interface for both educators and learners, supporting course creation, lesson management, interactive quizzes, and comprehensive progress analytics.
 
 ### Key Highlights
+
 - ✅ **Cross-Platform**: iOS, Android, and Web support via Expo
 - ✅ **Dual-Role System**: Separate interfaces for Teachers and Students
 - ✅ **Real-Time Notifications**: Instant updates on announcements and progress
@@ -316,6 +317,7 @@ E-Learning-App-main/
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **React Native** (v0.81.5) - Cross-platform mobile framework
 - **Expo** (v54.0.23) - Development platform and build service
 - **TypeScript** (v5.9.2) - Type-safe JavaScript
@@ -323,25 +325,30 @@ E-Learning-App-main/
 - **React Native Paper** (v5.12.0) - Material Design components
 
 ### State Management
+
 - **Zustand** (v4.4.0) - Lightweight state management
 
 ### Storage & Database
+
 - **Expo SQLite** (v16.0.9) - Local database
 - **AsyncStorage** (v2.2.0) - Key-value storage
 - **Expo File System** (v19.0.17) - File operations
 
 ### UI & Icons
+
 - **Expo Vector Icons** (v15.0.3) - Icon library
 - **React Native Vector Icons** (v10.0.0) - Additional icons
 - **Expo Linear Gradient** (v15.0.7) - Gradient backgrounds
 
 ### Media & File Handling
+
 - **Expo Image Picker** (v17.0.8) - Image selection
 - **Expo Document Picker** (v14.0.0) - Document selection
 - **Expo Media Library** (v18.2.0) - Media access
 - **React Native Image Viewing** (v0.2.2) - Image viewer
 
 ### Utilities
+
 - **date-fns** (v2.30.0) - Date manipulation
 - **Expo Haptics** (v15.0.7) - Haptic feedback
 - **Expo Constants** (v18.0.10) - App constants
@@ -351,6 +358,7 @@ E-Learning-App-main/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - npm or yarn
 - Expo CLI: `npm install -g expo-cli`
@@ -359,22 +367,26 @@ E-Learning-App-main/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/E-Learning-App-main.git
    cd E-Learning-App-main
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm start
    ```
 
 4. **Run on specific platform**
+
    ```bash
    # iOS
    npm run ios
@@ -402,6 +414,7 @@ E-Learning-App-main/
 ## 📱 Features
 
 ### For Students
+
 - **Course Discovery**: Browse and search available courses
 - **Interactive Learning**: Access lessons with rich media content
 - **Quiz Assessments**: Take quizzes and get instant feedback
@@ -413,6 +426,7 @@ E-Learning-App-main/
 - **Live Class Browsing**: Discover and join available live classes
 
 ### For Teachers
+
 - **Course Management**: Create, edit, and organize courses
 - **Lesson Creation**: Add multimedia lessons with descriptions
 - **Quiz Builder**: Create interactive quizzes with multiple question types
@@ -425,6 +439,7 @@ E-Learning-App-main/
 - **Participant Tracking**: Monitor live class participants in real-time
 
 ### Shared Features
+
 - **Authentication**: Secure login and signup system
 - **User Profiles**: Customizable user profiles
 - **Notifications**: Real-time notification system
@@ -438,6 +453,7 @@ E-Learning-App-main/
 ### Core Tables
 
 **Users Table**
+
 ```
 - id (PRIMARY KEY)
 - email (UNIQUE)
@@ -450,6 +466,7 @@ E-Learning-App-main/
 ```
 
 **Courses Table**
+
 ```
 - id (PRIMARY KEY)
 - teacher_id (FOREIGN KEY)
@@ -462,6 +479,7 @@ E-Learning-App-main/
 ```
 
 **Lessons Table**
+
 ```
 - id (PRIMARY KEY)
 - course_id (FOREIGN KEY)
@@ -473,6 +491,7 @@ E-Learning-App-main/
 ```
 
 **Quizzes Table**
+
 ```
 - id (PRIMARY KEY)
 - course_id (FOREIGN KEY)
@@ -483,6 +502,7 @@ E-Learning-App-main/
 ```
 
 **Quiz Questions Table**
+
 ```
 - id (PRIMARY KEY)
 - quiz_id (FOREIGN KEY)
@@ -493,6 +513,7 @@ E-Learning-App-main/
 ```
 
 **Student Progress Table**
+
 ```
 - id (PRIMARY KEY)
 - student_id (FOREIGN KEY)
@@ -503,6 +524,7 @@ E-Learning-App-main/
 ```
 
 **Quiz Results Table**
+
 ```
 - id (PRIMARY KEY)
 - student_id (FOREIGN KEY)
@@ -518,6 +540,7 @@ E-Learning-App-main/
 ## 🔐 Authentication & Security
 
 ### Authentication Flow
+
 1. User enters credentials (email/password)
 2. Credentials validated against database
 3. JWT token generated and stored locally
@@ -525,6 +548,7 @@ E-Learning-App-main/
 5. Token refreshed on app startup
 
 ### Security Measures
+
 - ✅ Password hashing using industry-standard algorithms
 - ✅ Secure token storage in AsyncStorage
 - ✅ HTTPS for all network communications
@@ -537,6 +561,7 @@ E-Learning-App-main/
 ## 🎨 UI/UX Design
 
 ### Design Principles
+
 - **Material Design 3**: Modern, clean interface
 - **Responsive Layout**: Adapts to all screen sizes
 - **Dark Mode Support**: Automatic theme switching
@@ -544,6 +569,7 @@ E-Learning-App-main/
 - **Haptic Feedback**: Tactile user interactions
 
 ### Color Scheme
+
 - **Primary**: Modern blue (#007AFF)
 - **Secondary**: Accent colors for emphasis
 - **Background**: Light/Dark mode adaptive
@@ -603,12 +629,14 @@ useUserStore
 ## 🧪 Testing
 
 ### Testing Strategy
+
 - Unit tests for utility functions
 - Component tests for UI components
 - Integration tests for user flows
 - E2E tests for critical paths
 
 ### Running Tests
+
 ```bash
 # Run all tests
 npm test
@@ -625,16 +653,19 @@ npm test -- --coverage
 ## 📦 Building for Production
 
 ### iOS Build
+
 ```bash
 eas build --platform ios
 ```
 
 ### Android Build
+
 ```bash
 eas build --platform android
 ```
 
 ### Web Build
+
 ```bash
 npm run web
 ```
@@ -646,7 +677,9 @@ npm run web
 ### Common Issues
 
 **Issue**: App won't start
+
 - **Solution**: Clear cache and reinstall dependencies
+
   ```bash
   npm cache clean --force
   rm -rf node_modules
@@ -654,15 +687,19 @@ npm run web
   ```
 
 **Issue**: Database errors
+
 - **Solution**: Reset the database
+
   ```bash
   npm run reset-project
   ```
 
 **Issue**: Navigation not working
+
 - **Solution**: Check Expo Router configuration in `app.json`
 
 **Issue**: Permissions denied (Android)
+
 - **Solution**: Grant permissions in app settings or reinstall app
 
 ---
@@ -678,6 +715,7 @@ We welcome contributions! Please follow these steps:
 5. Open a Pull Request
 
 ### Code Style
+
 - Follow TypeScript best practices
 - Use meaningful variable names
 - Add comments for complex logic
@@ -699,6 +737,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **Platform**: Expo (iOS, Android, Web)
 
 ### Key Contributors
+
 - Development Team
 - UI/UX Designers
 - Quality Assurance
@@ -708,7 +747,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Support & Contact
 
 For support, feature requests, or bug reports:
-- 📧 Email: support@mentiq.app
+
+- 📧 Email: <support@mentiq.app>
 - 🐛 Issues: GitHub Issues
 - 💬 Discussions: GitHub Discussions
 
@@ -727,6 +767,7 @@ For support, feature requests, or bug reports:
 ## 📈 Roadmap
 
 ### v1.1.0 (Completed ✅)
+
 - [x] Video streaming support (Agora SDK)
 - [x] Live class features (Create, manage, join)
 - [x] Real-time participant tracking
@@ -736,8 +777,8 @@ For support, feature requests, or bug reports:
 - [x] Student live class browsing
 - [x] Mobile app push notifications
 
-
 ### v1.2.0 (Upcoming)
+
 - [ ] Advanced analytics dashboard
 - [ ] Social learning features
 - [ ] AI-powered recommendations
